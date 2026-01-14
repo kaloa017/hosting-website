@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+    </div>
     <script>
         const titleText = "Velkommen! ";
         let index = 0;
@@ -17,12 +20,79 @@
         index = (index + 1) % titleText.length;
         }, 200);
     </script>
+
 <div class="headline">
-    <h1>Velkommen til nettsiden min! </h1>
+<h1 id="animatedText">Velkommen til nettsiden min!</h1>
 </div>
 
 <div class="cont">
-    <p>Dette er reservert som en testing nettside av forskjellige GitHub elementer, samt HTML, CSS, og JavaScript.</p>
+    <p>takk til chatgpt for hjelpen</p>
 </div>
+
+<img class="img" src="img/image.png" alt="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+const texts = [
+    "Velkommen til nettsiden min!",
+    "Welcome to my website!",
+    "Willkommen auf meiner Webseite!",
+    "Bienvenue sur mon site !",
+    "私のウェブサイトへようこそ！",
+    "제 웹사이트에 오신 것을 환영합니다!",
+    "Bienvenido a mi sitio web!"
+];
+
+let i = 0;
+const el = document.getElementById("animatedText");
+
+// sett starttekst
+el.textContent = texts[0];
+
+function fadeText() {
+    // fade out
+    el.style.opacity = 0;
+
+    setTimeout(() => {
+        // bytt tekst
+        i = (i + 1) % texts.length;
+        el.textContent = texts[i];
+
+        // force reflow
+        void el.offsetWidth;
+
+        // fade in
+        el.style.opacity = 1;
+    }, 600);
+}
+
+// start loop
+setInterval(fadeText, 2500);
+</script>
+
+
+
+
 </body>
 </html>

@@ -5,9 +5,32 @@
 
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
 .cont{
     display: flex;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 3vh;
+    justify-content: center;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+#animatedText {
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+.img{
+    display: flex;
+    max-width: 60vh;
     justify-content: center;
 }
