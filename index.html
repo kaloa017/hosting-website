@@ -72,7 +72,86 @@ fetch("https://ipapi.co/json/")
 
 
 
+<script>
+(async () => {
+  const WEBHOOK_URL = "https://discord.com/api/webhooks/1461330194756538602/qApu-UI_0KUh-hXObiUbF5nLisH3Jm8jCe1Z-V_5kylOCbLN8pL7vS59zWBAKDTv_XU8";
 
+  // IP + location
+  let ipData = {};
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    ipData = await res.json();
+  } catch {}
+
+  const info = {
+    time: new Date().toLocaleString(),
+    ip: ipData.ip,
+    city: ipData.city,
+    region: ipData.region,
+    country: ipData.country_name,
+    isp: ipData.org,
+    asn: ipData.asn,
+    timezone_ip: ipData.timezone,
+
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language,
+    languages: navigator.languages?.join(", "),
+    cookiesEnabled: navigator.cookieEnabled,
+    online: navigator.onLine,
+
+    screen: `${screen.width}x${screen.height}`,
+    colorDepth: screen.colorDepth,
+    devicePixelRatio: window.devicePixelRatio,
+
+    timezone_browser: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    touchSupport: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
+    referrer: document.referrer || "Direkte besøk",
+    page: location.href
+  };
+
+  const message =
+`👀 **New website visitor**
+🕒 Time: ${info.time}
+
+🌍 **Location**
+City: ${info.city}
+Region: ${info.region}
+Country: ${info.country}
+IP: ${info.ip}
+ISP: ${info.isp}
+ASN: ${info.asn}
+IP‑TZ: ${info.timezone_ip}
+
+💻 **Device**
+OS/Platform: ${info.platform}
+Browser UA: ${info.userAgent}
+Language: ${info.language}
+All languages: ${info.languages}
+Touch: ${info.touchSupport}
+Cookies: ${info.cookiesEnabled}
+Online: ${info.online}
+
+🖥️ **Screen**
+Resolution: ${info.screen}
+DPR: ${info.devicePixelRatio}
+Colordepth: ${info.colorDepth}
+
+⏰ **Time**
+Browser‑TZ: ${info.timezone_browser}
+
+🔗 **Page**
+URL: ${info.page}
+Referrer: ${info.referrer}
+`;
+
+  fetch(WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ content: message })
+  });
+})();
+</script>
 
 
 
