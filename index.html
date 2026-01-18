@@ -1,205 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    </div>
-    <script>
-        const titleText = "Velkommen! ";
-        let index = 0;
+  <nav>  
+    <a class="logo" href="index.html"><img src="img/logo_white_k.svg" alt=""></a>
+    <a href="photography.html">Photography</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-        setInterval(() => {
-            document.title =
-        titleText.substring(index) +
-        titleText.substring(0, index);
-        index = (index + 1) % titleText.length;
-        }, 200);
-    </script>
+  <div class="content">
+    <h1>Hello! Welcome to my website!</h1>
+    <p>This website is currently under construction.</p>
+    <p>While you wait, feel free to check out the 'Photography' page.</p>
 
-<div class="headline">
-<h1 id="animatedText">Velkommen til nettsiden min!</h1>
-</div>
-
-<div class="cont">
-    <p>takk til chatgpt for hjelpen</p>
-</div>
-
-<img class="img" src="https://media.tenor.com/c-fmfYiYatEAAAAM/ronaldo.gif" alt="">
-
-<h1 id="tekst"></h1>
-
-<h1 id="tekst"></h1>
-
-<h1 id="tekst"></h1>
-<p id="info"></p>
-
-<script>
-fetch("https://ipapi.co/json/")
-  .then(res => res.json())
-  .then(data => {
-    if (data.city && data.country_name && data.ip && data.org) {
-      document.getElementById("tekst").textContent =
-        "Hows life in " + data.city + ", " + data.country_name + "? 🙂";
-
-      document.getElementById("info").textContent =
-        "IP: " + data.ip + " | ISP: " + data.org;
-    }
-  });
-</script>
-
-<input type="text" placeholder="Input">
-
-<p class="Info">
-Disclaimer: This website anonymously collects limited browser and device information for educational purposes.
-Location data is derived from your IP address and is approximate, typically within a 100 km radius.
-No personal identifiers such as names, accounts, or passwords are collected.
-</p>
+  </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-(async () => {
-  const WEBHOOK_URL = "https://discord.com/api/webhooks/1461330194756538602/qApu-UI_0KUh-hXObiUbF5nLisH3Jm8jCe1Z-V_5kylOCbLN8pL7vS59zWBAKDTv_XU8";
-
-  // IP + location
-  let ipData = {};
-  try {
-    const res = await fetch("https://ipapi.co/json/");
-    ipData = await res.json();
-  } catch {}
-
-  const info = {
-    time: new Date().toLocaleString(),
-    ip: ipData.ip,
-    city: ipData.city,
-    region: ipData.region,
-    country: ipData.country_name,
-    isp: ipData.org,
-    asn: ipData.asn,
-    timezone_ip: ipData.timezone,
-
-    userAgent: navigator.userAgent,
-    platform: navigator.platform,
-    language: navigator.language,
-    languages: navigator.languages?.join(", "),
-    cookiesEnabled: navigator.cookieEnabled,
-    online: navigator.onLine,
-
-    screen: `${screen.width}x${screen.height}`,
-    colorDepth: screen.colorDepth,
-    devicePixelRatio: window.devicePixelRatio,
-
-    timezone_browser: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    touchSupport: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
-    referrer: document.referrer || "Direkte besøk",
-    page: location.href
-  };
-
-  const message =
-`👀 **New website visitor**
-🕒 Time: ${info.time}
-
-🌍 **Location**
-City: ${info.city}
-Region: ${info.region}
-Country: ${info.country}
-IP: ${info.ip}
-ISP: ${info.isp}
-ASN: ${info.asn}
-IP‑TZ: ${info.timezone_ip}
-
-💻 **Device**
-OS/Platform: ${info.platform}
-Browser UA: ${info.userAgent}
-Language: ${info.language}
-All languages: ${info.languages}
-Touch: ${info.touchSupport}
-Cookies: ${info.cookiesEnabled}
-Online: ${info.online}
-
-🖥️ **Screen**
-Resolution: ${info.screen}
-DPR: ${info.devicePixelRatio}
-Colordepth: ${info.colorDepth}
-
-⏰ **Time**
-Browser‑TZ: ${info.timezone_browser}
-
-🔗 **Page**
-URL: ${info.page}
-Referrer: ${info.referrer}
-`;
-
-  fetch(WEBHOOK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ content: message })
-  });
-})();
-</script>
-
-
-
-<script>
-const texts = [
-    "Velkommen til nettsiden min!",
-    "Welcome to my website!",
-    "Willkommen auf meiner Webseite!",
-    "Bienvenue sur mon site !",
-    "私のウェブサイトへようこそ！",
-    "제 웹사이트에 오신 것을 환영합니다!",
-    "Bienvenido a mi sitio web!"
-];
-
-let i = 0;
-const el = document.getElementById("animatedText");
-
-// sett starttekst
-el.textContent = texts[0];
-
-function fadeText() {
-    // fade out
-    el.style.opacity = 0;
-
-    setTimeout(() => {
-        // bytt tekst
-        i = (i + 1) % texts.length;
-        el.textContent = texts[i];
-
-        // force reflow
-        void el.offsetWidth;
-
-        // fade in
-        el.style.opacity = 1;
-    }, 600);
-}
-
-// start loop
-setInterval(fadeText, 2500);
-</script>
-
-
-
+  <footer>
+    <a href="https://github.com/kaloa017">Github</a>
+    <a href="https://www.instagram.com/kasper.photography/">Instagram</a>
+  </footer>
 
 </body>
 </html>
